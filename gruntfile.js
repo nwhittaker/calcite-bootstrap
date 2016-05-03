@@ -356,16 +356,18 @@ module.exports = function(grunt) {
     // Clean the build folder before rebuild
     clean: {
       dist: {
-        src: [ 'dist/' ]
+        src: [
+          'dist/',
+          'docs/build'
+        ]
       },
     },
 
     // Runs tasks concurrently, speeding up Grunt
     'concurrent': {
       prepublish: [
-        'scss',
+        ['scss', 'copy'],
         //'uglify',
-        'copy',
         //'concat:dist',
         'newer:imagemin:dist'
       ]
